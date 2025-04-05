@@ -554,6 +554,15 @@ document.getElementById('noteForm')?.addEventListener('submit', async (e) => {
     }
 });
 
+function baixarDocumento() {
+    const link = document.createElement('a');
+    link.href = 'app-debug.apk'; // Nome do arquivo que está no site
+    link.download = 'Escola-Platform.apk'; // Nome do arquivo ao baixar
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 // Inicialização da página
 window.addEventListener('DOMContentLoaded', async () => {
     setupHamburgerMenu();
