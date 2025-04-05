@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- Ícone para apps e tela inicial no celular -->
+    <link rel="apple-touch-icon" sizes="180x180" href="icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="icon.png" />
+
+    <!-- Para apps no estilo PWA -->
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Escola Platform" />
+
+    <title>Escola Platform</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="ui-helpers.js"></script>
+    <script src="init.js"></script>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hamburger-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        .hamburger-menu.active {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Cabeçalho -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold">Perfil</h1>
+            <button id="menuBtn" class="text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menu Hambúrguer -->
+    <div id="hamburgerMenu" class="hamburger-menu fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-20 p-4">
+        <button id="closeMenuBtn" class="absolute top-4 right-4 text-xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="mt-8">
+            <ul class="space-y-4">
+                <li><a href="index.html" class="block py-2 px-4 rounded hover:bg-gray-100">Home</a></li>
+                <li><a href="notes.html" class="block py-2 px-4 rounded hover:bg-gray-100">Notas</a></li>
+                <li><a href="profile.html" class="block py-2 px-4 rounded hover:bg-gray-100">Perfil</a></li>
+                <li><button id="logoutBtn" class="w-full text-left py-2 px-4 rounded hover:bg-gray-100 text-red-500">Sair</button></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-4 py-6">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex flex-col items-center mb-6">
+                <img id="profileImage" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                     class="w-32 h-32 rounded-full object-cover mb-4">
+                <input type="file" id="imageUpload" accept="image/*" class="hidden">
+                <button id="changeImageBtn" class="text-blue-500 mb-4">Alterar foto</button>
+                
+                <form id="profileForm" class="w-full">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">Nome</label>
+                        <input type="text" id="name" class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">Biografia</label>
+                        <textarea id="bio" rows="3" class="w-full px-3 py-2 border rounded"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" id="email" class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded">Salvar</button>
+                </form>
+            </div>
+        </div>
+
+        <h2 class="text-xl font-bold mb-4">Meus Posts</h2>
+        <div id="userPostsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Posts do usuário serão carregados aqui -->
+        </div>
+    </main>
+    <footer class="bg-gray-800 text-white py-6 mt-10">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm">
+          <div class="mb-4 md:mb-0 text-center md:text-left">
+            <p>&copy; 2025 Escola Platform. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
